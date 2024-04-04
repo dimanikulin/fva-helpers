@@ -1,5 +1,13 @@
 # fva-helpers
 
+Ideate - try to generate some content from there
+
+create the site to help user to choose right way in photo organizing
+
+Create Empathy Map
+
+Fix Problem Statement
+
 Current Data Enriching
 
    Metadata enriching
