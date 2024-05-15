@@ -16,3 +16,4 @@ Current Data Enriching
       https://habr.com/ru/company/lanit/blog/503320/
       https://play.google.com/store/apps/details?id=com.bigwinepot.nwdn.international&hl=ru
       https://cleanup.pictures/
+      https://create.pixelcut.ai/upscaler 
