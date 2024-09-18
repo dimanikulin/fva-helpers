@@ -17,3 +17,4 @@ Current Data Enriching
       https://play.google.com/store/apps/details?id=com.bigwinepot.nwdn.international&hl=ru
       https://cleanup.pictures/
       https://create.pixelcut.ai/upscaler 
+https://github.com/XPixelGroup/DiffBIR?ref=aiartweekly
