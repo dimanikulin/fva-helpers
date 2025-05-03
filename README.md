@@ -18,3 +18,6 @@ Current Data Enriching
       https://cleanup.pictures/
       https://create.pixelcut.ai/upscaler 
 https://github.com/XPixelGroup/DiffBIR?ref=aiartweekly
+
+https://www.linkedin.com/posts/viktorsvertoka_frontend-activity-7322675976478375937-DSXt/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAlsWb8BPAbKMyDiy56H2KfpjQJ1GthAUxM
+https://htmlrev.com/
