@@ -21,3 +21,7 @@ https://github.com/XPixelGroup/DiffBIR?ref=aiartweekly
 
 https://www.linkedin.com/posts/viktorsvertoka_frontend-activity-7322675976478375937-DSXt/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAlsWb8BPAbKMyDiy56H2KfpjQJ1GthAUxM
 https://htmlrev.com/
+
+https://www.linkedin.com/posts/viktorsvertoka_frontend-react-tailwindcss-activity-7327920568735784960-ZdKI/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAlsWb8BPAbKMyDiy56H2KfpjQJ1GthAUxM
+ 
+ cssbuttons.io.
