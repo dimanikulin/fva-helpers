@@ -25,3 +25,7 @@ https://htmlrev.com/
 https://www.linkedin.com/posts/viktorsvertoka_frontend-react-tailwindcss-activity-7327920568735784960-ZdKI/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAlsWb8BPAbKMyDiy56H2KfpjQJ1GthAUxM
  
  cssbuttons.io.
+
+ https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/
+
+chat boot
