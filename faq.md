@@ -10,6 +10,7 @@
 - [5. Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
 - [Recap](recap.md)
+
 ---
 
 **Q: Are my photos being scanned?**  

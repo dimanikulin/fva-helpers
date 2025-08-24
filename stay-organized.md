@@ -10,6 +10,7 @@
 - [5. Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
 - [Recap](recap.md)
+
 ---
 
 A few habits now can save you hours later:

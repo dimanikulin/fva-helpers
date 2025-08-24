@@ -10,6 +10,7 @@
 - [5. Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
 - [Recap](recap.md)
+
 ---
 
 You don’t need to be a tech expert to find your favorite photos.  
