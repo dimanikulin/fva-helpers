@@ -3,13 +3,14 @@
 ---
 **Navigation**
 - [Home](index.md)
-- [1. What You Can Search](what-you-can-search.md)
-- [2. Why Search Might Fail](why-search-fails.md)
-- [3. Using Filters](filters.md)
-- [4. Troubleshooting](troubleshooting.md)
-- [5. Stay Organized](stay-organized.md)
+- [What You Can Search](what-you-can-search.md)
+- [Why Search Might Fail](why-search-fails.md)
+- [Using Filters](filters.md)
+- [Troubleshooting](troubleshooting.md)
+- [Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
 - [Recap](recap.md)
+
 ---
 
 If you still can’t find the photo:
