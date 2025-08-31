@@ -3,7 +3,6 @@
 ---
 **Navigation**
 - [Home](index.md)
-- [What You Can Search](what-you-can-search.md)
 - [Why Search Might Fail](why-search-fails.md)
 - [Using Filters](filters.md)
 - [Troubleshooting](troubleshooting.md)

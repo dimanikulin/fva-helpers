@@ -3,7 +3,6 @@
 ---
 **Navigation**
 - [Home](index.md)
-- [What You Can Search](what-you-can-search.md)
 - [Why Search Might Fail](why-search-fails.md)
 - [Using Filters](filters.md)
 - [Troubleshooting](troubleshooting.md)
@@ -22,12 +21,23 @@ This guide will help you:
 - Use filters to narrow results  
 - Stay organized so searching is easier in the future  
 
+# So What You Can Search
+Photo search works best when it has clues about your pictures.  
+Most search tools use **metadata** — little bits of information stored with your photos.
+
+You can usually search by:
+- **People** – “Photos of Sarah”
+- **Places** – “Paris 2019”
+- **Events** – “Birthday party”
+- **Objects** – “Beach” or “Dog”
+- **Dates** – “July 4th, 2022”
+
+💡 *Tip: Use short, clear words. If you’re looking for a wedding photo, try “Wedding 2020” before adding extra details.*
+
+
 ---
 
 ## 📖 Table of Contents
-
-1. [What You Can Search](what-you-can-search.md)  
-   → Learn what kinds of searches work best: people, places, events, and more.  
 
 2. [Why Search Might Fail](why-search-fails.md)  
    → Common issues (like missing tags or typos) and how to work around them.  
