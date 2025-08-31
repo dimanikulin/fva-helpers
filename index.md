@@ -3,10 +3,7 @@
 ---
 **Navigation**
 - [Home](index.md)
-- [Troubleshooting](troubleshooting.md)
-- [Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
-- [Recap](recap.md)
 
 ---
 
