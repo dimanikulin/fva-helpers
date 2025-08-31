@@ -3,12 +3,7 @@
 ---
 **Navigation**
 - [Home](index.md)
-- [Why Search Might Fail](why-search-fails.md)
-- [Using Filters](filters.md)
-- [Troubleshooting](troubleshooting.md)
-- [Stay Organized](stay-organized.md)
 - [FAQ](faq.md)
-- [Recap](recap.md)
 
 ---
 
@@ -20,6 +15,3 @@ A: Check your photo app’s privacy settings. Many tools process your photos loc
 
 **Q: Why do some photos have no location?**  
 A: The camera might not have had location access turned on when you took the photo.
-
----
-**← Previous:** [Stay Organized](stay-organized.md) | **Next:** [Recap →](recap.md)
