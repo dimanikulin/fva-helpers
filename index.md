@@ -7,14 +7,15 @@
 
 ---
 
-Ever searched for a photo and just… couldn’t find it?  
-You *know* it’s there somewhere, but the search keeps coming up empty.  
+# 📖 Narrative
+Imagine opening your photo app, typing in “Mom’s birthday,” and... nothing. You *know* you have that picture. But nothing shows up.
 
-This guide will help you:
-- Understand how photo search works  
-- Learn common mistakes and how to fix them  
-- Use filters to narrow results  
-- Stay organized so searching is easier in the future  
+This guide is here for that exact moment.
+
+It walks you through how photo search actually works — not just the features, but the quirks. You’ll learn how to use filters, why some photos don’t show up, and how to get better results every time.
+
+In just a few scrolls, even the most inexperienced user can feel like a search pro — no downloads, no tech lingo, no frustration.
+
 
 # 1️⃣ What You *Can* Search
 Photo search works best when it has clues about your pictures.  
@@ -78,7 +79,6 @@ A few habits now can save you hours later:
 # 📌 Recap
 You don’t need to be a tech expert to find your favorite photos.  
 Start with simple searches, use filters, and remember — the more organized your photos are, the easier it will be next time.  
-
 
 ---
 
