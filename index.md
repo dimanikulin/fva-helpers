@@ -1,3 +1,6 @@
+# Headline
+Lost your photos? We'll help you find them.
+
 # 📸 How to Search Your Photo Album
 
 ---
@@ -8,14 +11,13 @@
 ---
 
 # 📖 Narrative
-Imagine opening your photo app, typing in “Mom’s birthday,” and... nothing. You *know* you have that picture. But nothing shows up.
 
-This guide is here for that exact moment.
+Imagine your mom just got back from a vacation and can’t find any of her beach photos. She opens her photo app and scrolls... nothing. Panic. She’s not technical—searching by date or place doesn’t come naturally. Syncing with cloud services? Forget it.
 
+This site is built for users like her: people who just want a helpful, calming walkthrough of how to recover their precious memories. No jargon. No pop-ups. Just answers.
 It walks you through how photo search actually works — not just the features, but the quirks. You’ll learn how to use filters, why some photos don’t show up, and how to get better results every time.
 
 In just a few scrolls, even the most inexperienced user can feel like a search pro — no downloads, no tech lingo, no frustration.
-
 
 # 1️⃣ What You *Can* Search
 Photo search works best when it has clues about your pictures.  
@@ -75,6 +77,7 @@ A few habits now can save you hours later:
 - Allow location access so photos get tagged with where they were taken.  
 - Use albums to group photos from trips, events, or people.  
 - Mark important pictures as “Favorites.”  
+- Back up properly.
 
 # 📌 Recap
 You don’t need to be a tech expert to find your favorite photos.  
