@@ -34,12 +34,12 @@
 5. Search by Month or Location
 6. Try “June 2022” or “New York”.
 
-### 📌Bonus: Try “sunset” or “beach” if you can’t remember the date.
+## 📌Bonus: Try “sunset” or “beach” if you can’t remember the date.
 
 1. Use the map view
 2. Scroll down and tap the map under the “Places” section to browse by city or country.
 
-#### Bonus Tips
+### Bonus Tips
 - Use the “Albums” tab if you’ve ever organized photos after a trip.
 - Tap “Recents” if it was something you looked at recently.
 - Check shared albums – sometimes your photos are in someone else’s shared space.
