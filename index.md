@@ -32,6 +32,8 @@ You can usually search by:
 
 💡 *Tip: Use short, clear words. If you’re looking for a wedding photo, try “Wedding 2020” before adding extra details.*
 
+  → [How to search by date on iPhone and Android?](./search.md)
+
 # 2️⃣ Why a Search Might Not Work
 
 Sometimes a search gives you no results — even if you *know* the photo exists.  
