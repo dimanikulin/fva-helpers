@@ -70,6 +70,11 @@ If you still can’t find the photo:
 3. ✅ Search by the **month/year** instead of the exact day.  
 4. ✅ Look in your “Albums” or “Favorites” folders.  
 5. ✅ Make sure the app has permission to see all your photos.
+6. ✅ Check if there is no iCloud/Google Photos sync issues
+7. ✅ Make sure if storage is not full.
+8. ✅ Check for recently deleted folder.
+9. ✅ Make sure if login/account matches
+
 
 # 5️⃣ Stay Organized for Easier Future Searches
 
