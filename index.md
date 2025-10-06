@@ -1,5 +1,4 @@
-# Headline
-Lost your photos? We'll help you find them.
+# Lost your photos? We'll help you find them.
 
 # 📸 How to Search Your Photo Album
 
