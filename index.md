@@ -1,6 +1,4 @@
-# Lost your photos? We'll help you find them.
-
-# 📸 How to Search Your Photo Album
+# 📸Lost your photos? We'll help you find them.
 
 ---
 **Navigation**
