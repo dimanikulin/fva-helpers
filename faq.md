@@ -15,3 +15,9 @@ A: Check your photo app’s privacy settings. Many tools process your photos loc
 
 **Q: Why do some photos have no location?**  
 A: The camera might not have had location access turned on when you took the photo.
+
+**Q: How to improve photo quality?**
+A: To use following tools:
+- [Remini](https://play.google.com/store/apps/details?id=com.bigwinepot.nwdn.international)
+- [cleanup.pictures/](https://cleanup.pictures/)
+- [https://create.pixelcut.ai/upscaler](https://create.pixelcut.ai/upscaler) 
