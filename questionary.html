@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rich Chat Flow Assistant</title>
+  <title>Step-by-Step Chat Flow</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -14,6 +14,7 @@
       height: 100vh;
       margin: 0;
     }
+
     #chatbox {
       width: 480px;
       background: white;
@@ -22,48 +23,54 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      max-height: 90vh;
     }
+
     #messages {
       flex: 1;
       padding: 20px;
-      overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      justify-content: center;
+      align-items: stretch;
+      text-align: left;
     }
+
     .msg {
-      max-width: 80%;
-      padding: 10px 15px;
+      padding: 16px;
       border-radius: 18px;
-      line-height: 1.4;
-      word-wrap: break-word;
-    }
-    .bot {
       background: #e8f0fe;
-      align-self: flex-start;
+      line-height: 1.5;
+      word-wrap: break-word;
+      margin-bottom: 10px;
+      text-align: left;
+      animation: fadeIn 0.3s ease;
     }
-    .user {
-      background: #0078d7;
-      color: white;
-      align-self: flex-end;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
     .msg img {
       max-width: 100%;
       border-radius: 10px;
       margin-top: 6px;
     }
-    .msg video, .msg iframe {
+
+    .msg iframe {
       width: 100%;
       border-radius: 10px;
       margin-top: 8px;
+      aspect-ratio: 16/9;
     }
+
     #inputArea {
       display: flex;
       border-top: 1px solid #ddd;
       padding: 10px;
       background: #fafafa;
     }
+
     input, select {
       flex: 1;
       border: 1px solid #ccc;
@@ -71,6 +78,7 @@
       padding: 8px;
       font-size: 15px;
     }
+
     button {
       margin-left: 10px;
       border: none;
@@ -81,6 +89,7 @@
       cursor: pointer;
       transition: 0.2s;
     }
+
     button:hover {
       background: #005fa3;
     }
@@ -93,7 +102,6 @@
   </div>
 
   <script>
-    // === RICH DYNAMIC FLOW ===
     const flow = {
       start: {
         question: "👋 Hi there! What kind of help do you need?",
@@ -113,6 +121,7 @@
         type: "text",
         next: () => "tech_type"
       },
+
       tech_type: {
         question: "What kind of technical issue are you facing?",
         options: ["Software", "Hardware", "Network"],
@@ -121,6 +130,7 @@
                     : a === "Hardware" ? "hardware_help"
                     : "network_help"
       },
+
       software_help: {
         question: "Try reinstalling or updating the application. Need detailed steps?",
         image: "https://cdn-icons-png.flaticon.com/512/3197/3197947.png",
@@ -128,6 +138,7 @@
         options: ["Yes", "No"],
         next: (a) => a === "Yes" ? "show_doc" : "done"
       },
+
       show_doc: {
         question: "Here’s a guide that may help you:",
         html: '<a href="https://support.microsoft.com/" target="_blank">🔗 Microsoft Support Documentation</a>',
@@ -135,12 +146,14 @@
         options: ["Continue", "Finish"],
         next: (a) => a === "Finish" ? "done" : "tech_type"
       },
+
       hardware_help: {
         question: "Please describe your hardware issue briefly.",
         image: "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
         type: "text",
         next: () => "done"
       },
+
       network_help: {
         question: "Here’s a quick tip: try restarting your router.",
         html: "<b>💡 Pro tip:</b> Unplug for 10s, then plug back in.",
@@ -149,6 +162,7 @@
         options: ["It worked", "Still broken"],
         next: (a) => a === "It worked" ? "done" : "contact_support"
       },
+
       contact_support: {
         question: "Please provide your email so our support can reach you.",
         image: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
@@ -179,39 +193,46 @@
       }
     };
 
-    // === CHAT LOGIC ===
     const messagesDiv = document.getElementById("messages");
     const inputArea = document.getElementById("inputArea");
     let currentKey = "start";
     const answers = {};
 
-    function addMessage(text, sender = "bot", extras = {}) {
+    function showOnlyCurrentQuestion(content) {
+      messagesDiv.innerHTML = ""; // clear previous messages
+      messagesDiv.appendChild(content);
+    }
+
+    function addMessage(text, extras = {}) {
       const msg = document.createElement("div");
-      msg.className = `msg ${sender}`;
-      if (text) msg.innerHTML = text;
+      msg.className = "msg";
+      msg.innerHTML = text;
+
       if (extras.image) {
         const img = document.createElement("img");
         img.src = extras.image;
         msg.appendChild(img);
       }
+
       if (extras.video) {
         const iframe = document.createElement("iframe");
         iframe.src = extras.video;
         iframe.allowFullscreen = true;
         msg.appendChild(iframe);
       }
+
       if (extras.html) {
         const htmlBlock = document.createElement("div");
         htmlBlock.innerHTML = extras.html;
         msg.appendChild(htmlBlock);
       }
-      messagesDiv.appendChild(msg);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+      showOnlyCurrentQuestion(msg);
     }
 
     function askQuestion(key) {
       const step = flow[key];
-      addMessage(step.question, "bot", step);
+      addMessage(step.question, step);
       inputArea.innerHTML = "";
 
       if (step.type === "text") {
@@ -240,21 +261,18 @@
         inputArea.append(select, btn);
       } 
       else if (step.type === "summary") {
-        addMessage("<pre>" + JSON.stringify(answers, null, 2) + "</pre>", "bot", step);
+        addMessage(step.question, step);
+        const summary = document.createElement("pre");
+        summary.textContent = JSON.stringify(answers, null, 2);
+        messagesDiv.appendChild(summary);
         inputArea.innerHTML = "";
-        fetch("https://example.com/api/save", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(answers)
-        }).catch(console.error);
       }
     }
 
     function handleAnswer(key, value) {
-      addMessage(value, "user");
       answers[key] = value;
       const nextKey = typeof flow[key].next === "function" ? flow[key].next(value) : flow[key].next;
-      if (nextKey) setTimeout(() => askQuestion(nextKey), 600);
+      if (nextKey) setTimeout(() => askQuestion(nextKey), 400);
     }
 
     askQuestion(currentKey);
