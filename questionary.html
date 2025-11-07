@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Flow with Images</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rich Chat Flow Assistant</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: #f5f7fb;
+      background: #eef1f7;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
     #chatbox {
-      width: 440px;
+      width: 480px;
       background: white;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      max-height: 90vh;
     }
     #messages {
       flex: 1;
@@ -35,6 +37,7 @@
       padding: 10px 15px;
       border-radius: 18px;
       line-height: 1.4;
+      word-wrap: break-word;
     }
     .bot {
       background: #e8f0fe;
@@ -50,10 +53,16 @@
       border-radius: 10px;
       margin-top: 6px;
     }
+    .msg video, .msg iframe {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
     #inputArea {
       display: flex;
       border-top: 1px solid #ddd;
       padding: 10px;
+      background: #fafafa;
     }
     input, select {
       flex: 1;
@@ -70,6 +79,7 @@
       border-radius: 6px;
       padding: 8px 14px;
       cursor: pointer;
+      transition: 0.2s;
     }
     button:hover {
       background: #005fa3;
@@ -83,77 +93,117 @@
   </div>
 
   <script>
-    // === Dynamic flow definition with images ===
+    // === RICH DYNAMIC FLOW ===
     const flow = {
       start: {
-        question: "👋 Hi there! What type of issue are you facing today?",
+        question: "👋 Hi there! What kind of help do you need?",
         image: "https://cdn-icons-png.flaticon.com/512/4712/4712108.png",
+        html: "<b>I can assist with technical, business, or personal issues.</b>",
         type: "select",
         options: ["Technical", "Personal", "Business"],
-        next: (a) => a === "Technical" ? "tech_detail"
-               : a === "Personal" ? "personal_detail"
-               : "business_detail"
+        next: (a) => a === "Technical" ? "tech_intro"
+               : a === "Personal" ? "personal_intro"
+               : "business_intro"
       },
-      tech_detail: {
-        question: "Got it! What kind of technical issue is it?",
-        image: "https://cdn-icons-png.flaticon.com/512/869/869636.png",
+
+      tech_intro: {
+        question: "Got it! Let’s troubleshoot your tech issue.",
+        video: "https://www.youtube.com/embed/tgbNymZ7vqY",
+        html: "<i>This short video explains how to collect logs for your system.</i>",
         type: "text",
-        next: () => "tech_urgency"
+        next: () => "tech_type"
       },
-      tech_urgency: {
-        question: "Is it urgent?",
-        image: "https://cdn-icons-png.flaticon.com/512/2897/2897772.png",
+      tech_type: {
+        question: "What kind of technical issue are you facing?",
+        options: ["Software", "Hardware", "Network"],
+        type: "select",
+        next: (a) => a === "Software" ? "software_help"
+                    : a === "Hardware" ? "hardware_help"
+                    : "network_help"
+      },
+      software_help: {
+        question: "Try reinstalling or updating the application. Need detailed steps?",
+        image: "https://cdn-icons-png.flaticon.com/512/3197/3197947.png",
         type: "select",
         options: ["Yes", "No"],
-        next: (a) => a === "Yes" ? "contact_support" : "suggest_doc"
+        next: (a) => a === "Yes" ? "show_doc" : "done"
+      },
+      show_doc: {
+        question: "Here’s a guide that may help you:",
+        html: '<a href="https://support.microsoft.com/" target="_blank">🔗 Microsoft Support Documentation</a>',
+        type: "select",
+        options: ["Continue", "Finish"],
+        next: (a) => a === "Finish" ? "done" : "tech_type"
+      },
+      hardware_help: {
+        question: "Please describe your hardware issue briefly.",
+        image: "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
+        type: "text",
+        next: () => "done"
+      },
+      network_help: {
+        question: "Here’s a quick tip: try restarting your router.",
+        html: "<b>💡 Pro tip:</b> Unplug for 10s, then plug back in.",
+        image: "https://cdn-icons-png.flaticon.com/512/2682/2682060.png",
+        type: "select",
+        options: ["It worked", "Still broken"],
+        next: (a) => a === "It worked" ? "done" : "contact_support"
       },
       contact_support: {
-        question: "Please provide your email so our support team can reach you.",
+        question: "Please provide your email so our support can reach you.",
         image: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
         type: "text",
         next: () => "done"
       },
-      suggest_doc: {
-        question: "You can check our documentation for solutions. Would you like a link?",
-        image: "https://cdn-icons-png.flaticon.com/512/1170/1170678.png",
-        type: "select",
-        options: ["Yes", "No"],
-        next: () => "done"
-      },
-      personal_detail: {
-        question: "Would you like to describe your issue briefly?",
+
+      personal_intro: {
+        question: "Alright, sometimes personal issues need a bit of reflection.",
+        html: "<i>I'm not a counselor, but I can help you think through your situation.</i>",
         image: "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
         type: "text",
         next: () => "done"
       },
-      business_detail: {
-        question: "Is this related to a client, supplier, or finance?",
+
+      business_intro: {
+        question: "Business issues can be complex. What area do you want to discuss?",
         image: "https://cdn-icons-png.flaticon.com/512/2537/2537657.png",
         type: "select",
         options: ["Client", "Supplier", "Finance"],
         next: () => "done"
       },
+
       done: {
-        question: "✅ Thank you! Here’s a summary of your answers:",
-        image: "https://cdn-icons-png.flaticon.com/512/190/190411.png",
-        type: "summary"
+        question: "✅ Thanks! Here’s a summary of what we discussed:",
+        type: "summary",
+        image: "https://cdn-icons-png.flaticon.com/512/190/190411.png"
       }
     };
 
-    // === Chat logic ===
+    // === CHAT LOGIC ===
     const messagesDiv = document.getElementById("messages");
     const inputArea = document.getElementById("inputArea");
     let currentKey = "start";
     const answers = {};
 
-    function addMessage(text, sender = "bot", image = null) {
+    function addMessage(text, sender = "bot", extras = {}) {
       const msg = document.createElement("div");
       msg.className = `msg ${sender}`;
-      msg.textContent = text;
-      if (image) {
+      if (text) msg.innerHTML = text;
+      if (extras.image) {
         const img = document.createElement("img");
-        img.src = image;
+        img.src = extras.image;
         msg.appendChild(img);
+      }
+      if (extras.video) {
+        const iframe = document.createElement("iframe");
+        iframe.src = extras.video;
+        iframe.allowFullscreen = true;
+        msg.appendChild(iframe);
+      }
+      if (extras.html) {
+        const htmlBlock = document.createElement("div");
+        htmlBlock.innerHTML = extras.html;
+        msg.appendChild(htmlBlock);
       }
       messagesDiv.appendChild(msg);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
@@ -161,7 +211,7 @@
 
     function askQuestion(key) {
       const step = flow[key];
-      addMessage(step.question, "bot", step.image);
+      addMessage(step.question, "bot", step);
       inputArea.innerHTML = "";
 
       if (step.type === "text") {
@@ -190,9 +240,8 @@
         inputArea.append(select, btn);
       } 
       else if (step.type === "summary") {
-        addMessage(JSON.stringify(answers, null, 2), "bot");
+        addMessage("<pre>" + JSON.stringify(answers, null, 2) + "</pre>", "bot", step);
         inputArea.innerHTML = "";
-        // Example: send to backend
         fetch("https://example.com/api/save", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -205,12 +254,9 @@
       addMessage(value, "user");
       answers[key] = value;
       const nextKey = typeof flow[key].next === "function" ? flow[key].next(value) : flow[key].next;
-      if (nextKey) {
-        setTimeout(() => askQuestion(nextKey), 600);
-      }
+      if (nextKey) setTimeout(() => askQuestion(nextKey), 600);
     }
 
-    // Start the chat
     askQuestion(currentKey);
   </script>
 </body>
