@@ -92,6 +92,8 @@ Start with simple searches, use filters, and remember — the more organized you
 [FAQ](faq.md)  
    → Quick answers to privacy, scanning, and missing info questions.  
 
+   [q](./questionary.html)
+
 ---
 
 # References
