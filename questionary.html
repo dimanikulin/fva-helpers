@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Flow Assistant</title>
+  <title>Chat Flow with Images</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -14,7 +14,7 @@
       height: 100vh;
     }
     #chatbox {
-      width: 420px;
+      width: 440px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -44,6 +44,11 @@
       background: #0078d7;
       color: white;
       align-self: flex-end;
+    }
+    .msg img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 6px;
     }
     #inputArea {
       display: flex;
@@ -78,10 +83,11 @@
   </div>
 
   <script>
-    // === Dynamic flow definition ===
+    // === Dynamic flow definition with images ===
     const flow = {
       start: {
-        question: "Hi! 👋 What kind of problem are you facing?",
+        question: "👋 Hi there! What type of issue are you facing today?",
+        image: "https://cdn-icons-png.flaticon.com/512/4712/4712108.png",
         type: "select",
         options: ["Technical", "Personal", "Business"],
         next: (a) => a === "Technical" ? "tech_detail"
@@ -89,61 +95,73 @@
                : "business_detail"
       },
       tech_detail: {
-        question: "Got it. What kind of technical issue is it? (e.g., software, hardware)",
+        question: "Got it! What kind of technical issue is it?",
+        image: "https://cdn-icons-png.flaticon.com/512/869/869636.png",
         type: "text",
         next: () => "tech_urgency"
       },
       tech_urgency: {
         question: "Is it urgent?",
+        image: "https://cdn-icons-png.flaticon.com/512/2897/2897772.png",
         type: "select",
         options: ["Yes", "No"],
         next: (a) => a === "Yes" ? "contact_support" : "suggest_doc"
       },
       contact_support: {
-        question: "Please provide your email so we can contact you.",
+        question: "Please provide your email so our support team can reach you.",
+        image: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
         type: "text",
         next: () => "done"
       },
       suggest_doc: {
         question: "You can check our documentation for solutions. Would you like a link?",
+        image: "https://cdn-icons-png.flaticon.com/512/1170/1170678.png",
         type: "select",
         options: ["Yes", "No"],
         next: () => "done"
       },
       personal_detail: {
-        question: "Would you like to describe the issue briefly?",
+        question: "Would you like to describe your issue briefly?",
+        image: "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
         type: "text",
         next: () => "done"
       },
       business_detail: {
-        question: "Is this about a client, supplier, or finance issue?",
+        question: "Is this related to a client, supplier, or finance?",
+        image: "https://cdn-icons-png.flaticon.com/512/2537/2537657.png",
         type: "select",
         options: ["Client", "Supplier", "Finance"],
         next: () => "done"
       },
       done: {
-        question: "Thanks! Here’s what I gathered:",
+        question: "✅ Thank you! Here’s a summary of your answers:",
+        image: "https://cdn-icons-png.flaticon.com/512/190/190411.png",
         type: "summary"
       }
     };
 
-    // === Chat flow logic ===
+    // === Chat logic ===
     const messagesDiv = document.getElementById("messages");
     const inputArea = document.getElementById("inputArea");
     let currentKey = "start";
     const answers = {};
 
-    function addMessage(text, sender = "bot") {
+    function addMessage(text, sender = "bot", image = null) {
       const msg = document.createElement("div");
       msg.className = `msg ${sender}`;
       msg.textContent = text;
+      if (image) {
+        const img = document.createElement("img");
+        img.src = image;
+        msg.appendChild(img);
+      }
       messagesDiv.appendChild(msg);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
     function askQuestion(key) {
       const step = flow[key];
-      addMessage(step.question, "bot");
+      addMessage(step.question, "bot", step.image);
       inputArea.innerHTML = "";
 
       if (step.type === "text") {
@@ -174,7 +192,7 @@
       else if (step.type === "summary") {
         addMessage(JSON.stringify(answers, null, 2), "bot");
         inputArea.innerHTML = "";
-        // Send to backend if needed:
+        // Example: send to backend
         fetch("https://example.com/api/save", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -192,7 +210,7 @@
       }
     }
 
-    // === Start chat ===
+    // Start the chat
     askQuestion(currentKey);
   </script>
 </body>
