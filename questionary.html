@@ -229,7 +229,26 @@
 
       showOnlyCurrentQuestion(msg);
     }
+    async function sendDataToSheet(data) {
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbyQCYelSazW1wJbT3VhiQ0w6tBZ2ITx0gnOZR4xoo5gEhT7Lt5EF29P6YJfz5IqH0jN/exec",
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          }
+        );
 
+        const text = await response.text();
+        console.log("Server response:", text);
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    }
     function askQuestion(key) {
       const step = flow[key];
       addMessage(step.question, step);
@@ -265,13 +284,7 @@
         const summary = document.createElement("pre");
         summary.textContent = JSON.stringify(answers, null, 2);
         messagesDiv.appendChild(summary);
-        fetch('https://script.google.com/macros/s/AKfycbyQCYelSazW1wJbT3VhiQ0w6tBZ2ITx0gnOZR4xoo5gEhT7Lt5EF29P6YJfz5IqH0jN/exec', {
-          method: 'POST',
-          body: JSON.stringify(answers),
-          headers: { 'Content-Type': 'application/json' }
-        })
-        .then(r => r.text())
-        .then(console.log);
+        sendDataToSheet(answers);
         inputArea.innerHTML = "";
       }
     }
