@@ -1,0 +1,100 @@
+{
+  "start": {
+    "question": "👋 Hi there! What kind of help do you need?",
+    "image": "https://cdn-icons-png.flaticon.com/512/4712/4712108.png",
+    "html": "<b>I can assist with technical, business, or personal issues.</b>",
+    "type": "select",
+    "options": ["Technical", "Personal", "Business"],
+    "next": "resolve_start"
+  },
+
+  "resolve_start": {
+    "nextByAnswer": {
+      "Technical": "tech_intro",
+      "Personal": "personal_intro",
+      "Business": "business_intro"
+    }
+  },
+
+  "tech_intro": {
+    "question": "Got it! Let’s troubleshoot your tech issue.",
+    "video": "https://www.youtube.com/embed/tgbNymZ7vqY",
+    "html": "<i>This short video explains how to collect logs.</i>",
+    "type": "text",
+    "next": "tech_type"
+  },
+
+  "tech_type": {
+    "question": "What kind of technical issue?",
+    "type": "select",
+    "options": ["Software", "Hardware", "Network"],
+    "nextByAnswer": {
+      "Software": "software_help",
+      "Hardware": "hardware_help",
+      "Network": "network_help"
+    }
+  },
+
+  "software_help": {
+    "question": "Try reinstalling the app. Need steps?",
+    "type": "select",
+    "options": ["Yes", "No"],
+    "nextByAnswer": {
+      "Yes": "show_doc",
+      "No": "done"
+    }
+  },
+
+  "show_doc": {
+    "question": "Here’s a guide:",
+    "html": "<a href='https://support.microsoft.com/' target='_blank'>MS Support</a>",
+    "type": "select",
+    "options": ["Continue", "Finish"],
+    "nextByAnswer": {
+      "Finish": "done",
+      "Continue": "tech_type"
+    }
+  },
+
+  "hardware_help": {
+    "question": "Describe the hardware issue:",
+    "type": "text",
+    "next": "done"
+  },
+
+  "network_help": {
+    "question": "Try restarting your router.",
+    "html": "<b>Pro tip:</b> Unplug 10 seconds.",
+    "type": "select",
+    "options": ["It worked", "Still broken"],
+    "nextByAnswer": {
+      "It worked": "done",
+      "Still broken": "contact_support"
+    }
+  },
+
+  "contact_support": {
+    "question": "Your email so support can reach you?",
+    "type": "text",
+    "next": "done"
+  },
+
+  "personal_intro": {
+    "question": "Describe what’s on your mind:",
+    "type": "text",
+    "next": "done"
+  },
+
+  "business_intro": {
+    "question": "What area?",
+    "type": "select",
+    "options": ["Client", "Supplier", "Finance"],
+    "next": "done"
+  },
+
+  "done": {
+    "question": "Thanks! Summary:",
+    "type": "summary",
+    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png"
+  }
+}

@@ -102,101 +102,17 @@
   </div>
 
   <script>
-    const flow = {
-      start: {
-        question: "👋 Hi there! What kind of help do you need?",
-        image: "https://cdn-icons-png.flaticon.com/512/4712/4712108.png",
-        html: "<b>I can assist with technical, business, or personal issues.</b>",
-        type: "select",
-        options: ["Technical", "Personal", "Business"],
-        next: (a) => a === "Technical" ? "tech_intro"
-               : a === "Personal" ? "personal_intro"
-               : "business_intro"
-      },
+   let flow = {};
+   const answers = {};
 
-      tech_intro: {
-        question: "Got it! Let’s troubleshoot your tech issue.",
-        video: "https://www.youtube.com/embed/tgbNymZ7vqY",
-        html: "<i>This short video explains how to collect logs for your system.</i>",
-        type: "text",
-        next: () => "tech_type"
-      },
-
-      tech_type: {
-        question: "What kind of technical issue are you facing?",
-        options: ["Software", "Hardware", "Network"],
-        type: "select",
-        next: (a) => a === "Software" ? "software_help"
-                    : a === "Hardware" ? "hardware_help"
-                    : "network_help"
-      },
-
-      software_help: {
-        question: "Try reinstalling or updating the application. Need detailed steps?",
-        image: "https://cdn-icons-png.flaticon.com/512/3197/3197947.png",
-        type: "select",
-        options: ["Yes", "No"],
-        next: (a) => a === "Yes" ? "show_doc" : "done"
-      },
-
-      show_doc: {
-        question: "Here’s a guide that may help you:",
-        html: '<a href="https://support.microsoft.com/" target="_blank">🔗 Microsoft Support Documentation</a>',
-        type: "select",
-        options: ["Continue", "Finish"],
-        next: (a) => a === "Finish" ? "done" : "tech_type"
-      },
-
-      hardware_help: {
-        question: "Please describe your hardware issue briefly.",
-        image: "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
-        type: "text",
-        next: () => "done"
-      },
-
-      network_help: {
-        question: "Here’s a quick tip: try restarting your router.",
-        html: "<b>💡 Pro tip:</b> Unplug for 10s, then plug back in.",
-        image: "https://cdn-icons-png.flaticon.com/512/2682/2682060.png",
-        type: "select",
-        options: ["It worked", "Still broken"],
-        next: (a) => a === "It worked" ? "done" : "contact_support"
-      },
-
-      contact_support: {
-        question: "Please provide your email so our support can reach you.",
-        image: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
-        type: "text",
-        next: () => "done"
-      },
-
-      personal_intro: {
-        question: "Alright, sometimes personal issues need a bit of reflection.",
-        html: "<i>I'm not a counselor, but I can help you think through your situation.</i>",
-        image: "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
-        type: "text",
-        next: () => "done"
-      },
-
-      business_intro: {
-        question: "Business issues can be complex. What area do you want to discuss?",
-        image: "https://cdn-icons-png.flaticon.com/512/2537/2537657.png",
-        type: "select",
-        options: ["Client", "Supplier", "Finance"],
-        next: () => "done"
-      },
-
-      done: {
-        question: "✅ Thanks! Here’s a summary of what we discussed:",
-        type: "summary",
-        image: "https://cdn-icons-png.flaticon.com/512/190/190411.png"
-      }
-    };
-
+    async function loadFlow() {
+      const res = await fetch("flow.json");
+      flow = await res.json();
+      askQuestion("start");
+    }
     const messagesDiv = document.getElementById("messages");
     const inputArea = document.getElementById("inputArea");
     let currentKey = "start";
-    const answers = {};
 
     function showOnlyCurrentQuestion(content) {
       messagesDiv.innerHTML = ""; // clear previous messages
@@ -250,51 +166,57 @@
     }
     function askQuestion(key) {
       const step = flow[key];
+
       addMessage(step.question, step);
+
       inputArea.innerHTML = "";
 
       if (step.type === "text") {
         const input = document.createElement("input");
-        input.placeholder = "Type your answer...";
+        input.placeholder = "Type...";
         const btn = document.createElement("button");
         btn.textContent = "Send";
-        btn.onclick = () => {
-          const value = input.value.trim();
-          if (!value) return;
-          handleAnswer(key, value);
-        };
+        btn.onclick = () => handleAnswer(key, input.value);
         inputArea.append(input, btn);
-      } 
+      }
       else if (step.type === "select") {
         const select = document.createElement("select");
-        step.options.forEach(opt => {
-          const o = document.createElement("option");
-          o.value = opt;
-          o.textContent = opt;
-          select.appendChild(o);
+        step.options.forEach(o => {
+          const opt = document.createElement("option");
+          opt.value = o;
+          opt.textContent = o;
+          select.appendChild(opt);
         });
         const btn = document.createElement("button");
         btn.textContent = "Send";
         btn.onclick = () => handleAnswer(key, select.value);
         inputArea.append(select, btn);
-      } 
+      }
       else if (step.type === "summary") {
-        addMessage(step.question, step);
-        const summary = document.createElement("pre");
-        summary.textContent = JSON.stringify(answers, null, 2);
-        messagesDiv.appendChild(summary);
+        addMessage(JSON.stringify(answers, null, 2));
         sendDataToSheet(answers);
         inputArea.innerHTML = "";
       }
     }
 
     function handleAnswer(key, value) {
-      answers[key] = value;
-      const nextKey = typeof flow[key].next === "function" ? flow[key].next(value) : flow[key].next;
-      if (nextKey) setTimeout(() => askQuestion(nextKey), 400);
+        answers[key] = value;
+
+        const step = flow[key];
+        
+        let nextKey = null;
+
+        // Case 1 — static next
+        if (step.next) nextKey = step.next;
+
+        // Case 2 — branching next
+        if (step.nextByAnswer) nextKey = step.nextByAnswer[value];
+
+        askQuestion(nextKey);
     }
 
-    askQuestion(currentKey);
+    loadFlow();
+
   </script>
 </body>
 </html>
