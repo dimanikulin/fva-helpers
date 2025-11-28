@@ -5,10 +5,6 @@
     "html": "<b>I can assist with technical, business, or personal issues.</b>",
     "type": "select",
     "options": ["Technical", "Personal", "Business"],
-    "next": "resolve_start"
-  },
-
-  "resolve_start": {
     "nextByAnswer": {
       "Technical": "tech_intro",
       "Personal": "personal_intro",
@@ -36,7 +32,8 @@
   },
 
   "software_help": {
-    "question": "Try reinstalling the app. Need steps?",
+    "question": "Try reinstalling the app. Need detailed steps?",
+    "image": "https://cdn-icons-png.flaticon.com/512/3197/3197947.png",
     "type": "select",
     "options": ["Yes", "No"],
     "nextByAnswer": {
@@ -46,25 +43,27 @@
   },
 
   "show_doc": {
-    "question": "Here’s a guide:",
-    "html": "<a href='https://support.microsoft.com/' target='_blank'>MS Support</a>",
+    "question": "Here’s a guide that might help:",
+    "html": "<a href='https://support.microsoft.com/' target='_blank'>Microsoft Support Docs</a>",
     "type": "select",
     "options": ["Continue", "Finish"],
     "nextByAnswer": {
-      "Finish": "done",
-      "Continue": "tech_type"
+      "Continue": "tech_type",
+      "Finish": "done"
     }
   },
 
   "hardware_help": {
-    "question": "Describe the hardware issue:",
+    "question": "Describe your hardware issue:",
+    "image": "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
     "type": "text",
     "next": "done"
   },
 
   "network_help": {
     "question": "Try restarting your router.",
-    "html": "<b>Pro tip:</b> Unplug 10 seconds.",
+    "html": "<b>Tip:</b> Unplug for 10 seconds and plug back in.",
+    "image": "https://cdn-icons-png.flaticon.com/512/2682/2682060.png",
     "type": "select",
     "options": ["It worked", "Still broken"],
     "nextByAnswer": {
@@ -74,27 +73,30 @@
   },
 
   "contact_support": {
-    "question": "Your email so support can reach you?",
+    "question": "Please provide your email so support can contact you:",
+    "image": "https://cdn-icons-png.flaticon.com/512/732/732200.png",
     "type": "text",
     "next": "done"
   },
 
   "personal_intro": {
-    "question": "Describe what’s on your mind:",
+    "question": "Alright, describe what's on your mind.",
+    "image": "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
     "type": "text",
     "next": "done"
   },
 
   "business_intro": {
-    "question": "What area?",
+    "question": "Which business area is this about?",
+    "image": "https://cdn-icons-png.flaticon.com/512/2537/2537657.png",
     "type": "select",
     "options": ["Client", "Supplier", "Finance"],
     "next": "done"
   },
 
   "done": {
-    "question": "Thanks! Summary:",
-    "type": "summary",
-    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png"
+    "question": "✅ Thanks! Here’s a summary:",
+    "image": "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    "type": "summary"
   }
 }
