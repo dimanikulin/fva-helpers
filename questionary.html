@@ -106,7 +106,7 @@
    const answers = {};
 
     async function loadFlow() {
-      const res = await fetch("flow.json");
+      const res = await fetch("questionaryFlow.json");
       flow = await res.json();
       askQuestion("start");
     }
