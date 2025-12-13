@@ -21,22 +21,22 @@ function displayMessage(text, extras = {}) {
     wrapper.innerHTML = text;
 
     if (extras.image) {
-    const img = document.createElement("img");
-    img.src = extras.image;
-    wrapper.appendChild(img);
+        const img = document.createElement("img");
+        img.src = extras.image;
+        wrapper.appendChild(img);
     }
 
     if (extras.video) {
-    const iframe = document.createElement("iframe");
-    iframe.src = extras.video;
-    iframe.allowFullscreen = true;
-    wrapper.appendChild(iframe);
+        const iframe = document.createElement("iframe");
+        iframe.src = extras.video;
+        iframe.allowFullscreen = true;
+        wrapper.appendChild(iframe);
     }
 
     if (extras.html) {
-    const htmlBlock = document.createElement("div");
-    htmlBlock.innerHTML = extras.html;
-    wrapper.appendChild(htmlBlock);
+        const htmlBlock = document.createElement("div");
+        htmlBlock.innerHTML = extras.html;
+        wrapper.appendChild(htmlBlock);
     }
 
     showOnly(wrapper);
@@ -49,31 +49,31 @@ function askQuestion(key) {
     inputArea.innerHTML = "";
 
     if (step.type === "text") {
-    const input = document.createElement("input");
-    input.placeholder = "Type here...";
-    const btn = document.createElement("button");
-    btn.textContent = "Send";
-    btn.onclick = () => handleAnswer(key, input.value.trim());
-    inputArea.append(input, btn);
+        const input = document.createElement("input");
+        input.placeholder = "Type here...";
+        const btn = document.createElement("button");
+        btn.textContent = "Send";
+        btn.onclick = () => handleAnswer(key, input.value.trim());
+        inputArea.append(input, btn);
     }
     else if (step.type === "select") {
-    const select = document.createElement("select");
-    step.options.forEach(o => {
-        const opt = document.createElement("option");
-        opt.value = o;
-        opt.textContent = o;
-        select.appendChild(opt);
-    });
-    const btn = document.createElement("button");
-    btn.textContent = "Send";
-    btn.onclick = () => handleAnswer(key, select.value);
-    inputArea.append(select, btn);
+        const select = document.createElement("select");
+        step.options.forEach(o => {
+            const opt = document.createElement("option");
+            opt.value = o;
+            opt.textContent = o;
+            select.appendChild(opt);
+        });
+        const btn = document.createElement("button");
+        btn.textContent = "Send";
+        btn.onclick = () => handleAnswer(key, select.value);
+        inputArea.append(select, btn);
     }
     else if (step.type === "summary") {
-    const summary = document.createElement("pre");
-    summary.textContent = JSON.stringify(answers, null, 2);
-    messagesDiv.appendChild(summary);
-    inputArea.innerHTML = "";
+        const summary = document.createElement("pre");
+        summary.textContent = JSON.stringify(answers, null, 2);
+        messagesDiv.appendChild(summary);
+        inputArea.innerHTML = "";
     }
 }
 
