@@ -94,5 +94,4 @@ Start with simple searches, use filters, and remember — the more organized you
    → Quick answers to privacy, scanning, and missing info questions.  
 [References](references.md)
    → The set of resources to help
-
-[q](./questionary.html)
+[Not sure what to click? - see this to help](./questionary.html)
