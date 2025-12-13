@@ -9,7 +9,25 @@ async function loadFlow() {
     flow = await res.json();
     askQuestion("start");
 }
+async function sendDataToSheet(data) {
+    try {
+    const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwNftynCnKc5fM9z2dalf7ao3FnwPyPoKdXZRjeKjmmq8xWPIHnFxhKYZZg1nxLqr4m/exec",
+        {
+        method: "POST",
+        body: JSON.stringify(data), // no JSON headers!
+        headers: {
+        "Content-Type": "text/plain" // no preflight
+            }
+        }
+        );
 
+        const text = await response.text();
+        console.log("Server response:", text);
+    } catch (err) {
+        console.error("Fetch error:", err);
+    }
+}
 function showOnly(content) {
     messagesDiv.innerHTML = "";
     messagesDiv.appendChild(content);
@@ -73,6 +91,7 @@ function askQuestion(key) {
         const summary = document.createElement("pre");
         summary.textContent = JSON.stringify(answers, null, 2);
         messagesDiv.appendChild(summary);
+        sendDataToSheet(summary.textContent);
         inputArea.innerHTML = "";
     }
 }
