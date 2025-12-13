@@ -42,14 +42,59 @@
     "type": "select",
     "options": ["Computer", "Mobile Devices", "Cloud Storage", "External Drive", "Not sure", "Finish"],
     "nextByAnswer": {
-      "Computer": "tech_type",
-      "Mobile Devices": "tech_type",
-      "Cloud Storage": "tech_type",
-      "External Drive": "tech_type",
-      "Not sure": "tech_type",
+      "Computer": "what_soft_use_for_search",
+      "Mobile Devices": "what_soft_use_for_search",
+      "Cloud Storage": "what_soft_use_for_search",
+      "External Drive": "what_soft_use_for_search",
+      "Not sure": "what_soft_use_for_search",
       "Finish": "done"
     }
   },
+
+  "what_soft_use_for_search": {
+    "question": "Which Software do you use to search photo/video in your album?",
+    "image": "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
+    "type": "select",
+    "options": ["No software", "Google Photos", "Apple Photo", "Mylio", "Not sure", "Finish"],
+    "nextByAnswer": {
+      "No software": "suggest_searcher",
+      "Google Photos": "what_soft_use_for_organize",
+      "Apple Photo": "what_soft_use_for_organize",
+      "Mylio": "what_soft_use_for_organize",
+      "Not sure": "what_soft_use_for_organize",
+      "Finish": "done"    
+    }
+  },
+
+
+  "what_soft_use_for_organize": {
+    "question": "Do you use any photo organizer?",
+    "image": "https://cdn-icons-png.flaticon.com/512/2682/2682060.png",
+    "type": "select",
+    "options": ["Yes, definitely", "Not really", "Not sure", "Finish"],
+    "nextByAnswer": {
+      "Yes, definitely": "done",
+      "Not really": "suggest_organizer",
+      "Not sure": "suggest_organizer",
+      "Finish": "done"
+    }
+  },
+
+  "suggest_searcher": {
+    "question": "You might want to try Google Photos/Apple Photo/Mylio for searching photos/videos easily.",
+    "image": "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
+    "type": "text",
+    "next": "done"
+  },
+
+
+  "suggest_organizer": {
+    "question": "Please consider using photo organizer software like Google Photos, Apple Photo, or Mylio to manage your family photos/videos more effectively.",
+    "image": "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+    "type": "text",
+    "next": "done"
+  },
+
 
   "tech_intro": {
     "question": "Got it! Let’s troubleshoot your tech issue.",
@@ -58,7 +103,6 @@
     "type": "text",
     "next": "tech_type"
   },
-
 
   "show_doc": {
     "question": "Here’s a guide that might help:",
@@ -69,39 +113,6 @@
       "Continue": "tech_type",
       "Finish": "done"
     }
-  },
-
-  "hardware_help": {
-    "question": "Describe your hardware issue:",
-    "image": "https://cdn-icons-png.flaticon.com/512/1029/1029183.png",
-    "type": "text",
-    "next": "done"
-  },
-
-  "network_help": {
-    "question": "Try restarting your router.",
-    "html": "<b>Tip:</b> Unplug for 10 seconds and plug back in.",
-    "image": "https://cdn-icons-png.flaticon.com/512/2682/2682060.png",
-    "type": "select",
-    "options": ["It worked", "Still broken"],
-    "nextByAnswer": {
-      "It worked": "done",
-      "Still broken": "contact_support"
-    }
-  },
-
-  "contact_support": {
-    "question": "Please provide your email so support can contact you:",
-    "image": "https://cdn-icons-png.flaticon.com/512/732/732200.png",
-    "type": "text",
-    "next": "done"
-  },
-
-  "personal_intro": {
-    "question": "Alright, describe what's on your mind.",
-    "image": "https://cdn-icons-png.flaticon.com/512/2922/2922656.png",
-    "type": "text",
-    "next": "done"
   },
 
   "done": {
