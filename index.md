@@ -95,3 +95,4 @@ Start with simple searches, use filters, and remember — the more organized you
 [References](references.md)
    → The set of resources to help
 [Not sure what to click? - see this to help](./questionary.html)
+   → The questionary to help you define an issue and to provide solution 
