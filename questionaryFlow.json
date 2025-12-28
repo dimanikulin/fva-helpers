@@ -37,7 +37,7 @@
   },
 
   "where_to_save": {
-    "question": "Which place/device do save your family photos/videos?",
+    "question": "Which place/device do you save your family photos/videos in?",
     "image": "https://cdn-icons-png.flaticon.com/512/2537/2537657.png",
     "type": "select",
     "options": ["Computer", "Mobile Devices", "Cloud Storage", "External Drive", "Not sure", "Finish"],
@@ -89,7 +89,7 @@
 
 
   "suggest_organizer": {
-    "question": "Please consider using photo organizer software like Google Photos, Apple Photo, or Mylio to manage your family photos/videos more effectively.",
+    "question": "Please consider using photo organizer software like digiKam, Shotwell Photo Manager, PhotoPrism etc to manage your family photos/videos more effectively.",
     "image": "https://cdn-icons-png.flaticon.com/512/732/732200.png",
     "type": "text",
     "next": "done"
