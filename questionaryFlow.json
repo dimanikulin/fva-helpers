@@ -6,8 +6,20 @@
     "type": "select",
     "options": ["Yes", "No"],
     "nextByAnswer": {
-      "Yes": "start_organizing",
+      "Yes": "album_type",
       "No": "done"
+    }
+  },
+
+  "album_type": {
+    "question": "Is it a digital photo album or a physical one?",
+    "image": "TODO",
+    "type": "select",
+    "options": ["Digital", "Physical", "Mixed"],
+    "nextByAnswer": {
+      "Digital": "start_organizing",
+      "Physical": "start_organizing",
+      "Mixed": "start_organizing"
     }
   },
 
