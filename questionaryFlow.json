@@ -47,6 +47,28 @@
       "Not really": "done"
     }
   },
+  "failed_attempt": {
+    "question": "I'm sorry to ask you, but how many failed attempts have you experienced?",
+    "image": "https://cdn-icons-png.flaticon.com/512/564/564619.png",
+    "type": "select",
+    "options": ["Never", "A few times", "Many times"],
+    "nextByAnswer": {
+      "Never": "importantce_to_find",
+      "A few times": "importantce_to_find",
+      "Many times": "importantce_to_find"
+    }
+  },
+  "importantce_to_find": {
+    "question": "How important is it for you to find specific photos/videos quickly?",
+    "image": "https://cdn-icons-png.flaticon.com/512/2913/2913465.png",
+    "type": "select",
+    "options": ["Very important", "Somewhat important", "Not important"],
+    "nextByAnswer": {
+      "Very important": "where_to_save",
+      "Somewhat important": "where_to_save",
+      "Not important": "done"
+    }
+  },
 
   "where_to_save": {
     "question": "Which place/device do you save your family photos/videos in?",
