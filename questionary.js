@@ -5,25 +5,41 @@ const messagesDiv = document.getElementById("messages");
 const inputArea = document.getElementById("inputArea");
 
 async function loadFlow() {
-    const res = await fetch("questionaryFlow.json");
-    flow = await res.json();
+    const currentScript = document.currentScript;
+    const pageType = currentScript.dataset.page;
+    console.log(pageType); // "questionary" or "questionaryFeatures"
+    if (pageType === "questionaryFeatures") {
+        const res = await fetch("questionaryFeaturesFlow.json");
+        flow = await res.json();
+    } else {
+        const res = await fetch("questionaryFlow.json");
+        flow = await res.json();
+    }
     askQuestion("start");
 }
 async function sendDataToSheet(data) {
     try {
-    const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwNftynCnKc5fM9z2dalf7ao3FnwPyPoKdXZRjeKjmmq8xWPIHnFxhKYZZg1nxLqr4m/exec",
-        {
-        method: "POST",
-        body: JSON.stringify(data), // no JSON headers!
-        headers: {
-        "Content-Type": "text/plain" // no preflight
-            }
+        const currentScript = document.currentScript;
+        const pageType = currentScript.dataset.page;
+        console.log(pageType); // "questionary" or "questionaryFeatures"
+        if (pageType === "questionaryFeatures") {
+            alert ("Not implemented yet");
         }
-        );
+        if (pageType === "questionary") {
+        const response = await fetch(
+            "https://script.google.com/macros/s/AKfycbwNftynCnKc5fM9z2dalf7ao3FnwPyPoKdXZRjeKjmmq8xWPIHnFxhKYZZg1nxLqr4m/exec",
+            {
+            method: "POST",
+            body: JSON.stringify(data), // no JSON headers!
+            headers: {
+            "Content-Type": "text/plain" // no preflight
+                }
+            }
+            );
 
-        const text = await response.text();
-        console.log("Server response:", text);
+            const text = await response.text();
+            console.log("Server response:", text);
+        }
     } catch (err) {
         console.error("Fetch error:", err);
     }
